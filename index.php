@@ -11,14 +11,18 @@ require 'vendor/autoload.php';
 $app = new Application();
 
 $app->before(function(Request $request){
-	print 'antes das rotas';
+	print '<p>antes das rotas</p>';
+});
+$app->get('users/', function(){
+	return 'Digite o seu nome: <input type="text" name="nome">'.'<br>'.' <a href="name">entrar</a>';
 });
 $app->get('users/{name}', function($name){
-    return 'Olá, ' . $name;
+    return '<p>Olá, ' . $name.' </p>';
 });
 
 $app->get('/', function(){
-	return "Hello Wolrd";
+	return '<h1>Rotas Silex</h1><br><a href="users">Usuarios</a>';
+
 })
 
 ->value('name', NULL)
